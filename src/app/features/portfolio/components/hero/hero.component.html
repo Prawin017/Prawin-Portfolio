@@ -1,0 +1,70 @@
+<section id="about" class="hero-section position-relative overflow-hidden">
+  <!-- Decorative Ambient Blobs -->
+  <div class="ambient-blur ambient-purple"></div>
+  <div class="ambient-blur ambient-pink"></div>
+
+  <div class="container relative-content py-5">
+    <div class="row align-items-center justify-content-between g-5">
+      <!-- Left Info Column -->
+      <div class="col-lg-7 text-center text-lg-start order-2 order-lg-1 animate-fade-in-up">
+        <!-- Badge -->
+        <div class="mb-4">
+          <span class="custom-badge badge-purple">
+            <i class="bi bi-briefcase-fill"></i> Open to Full-Time Roles
+          </span>
+        </div>
+
+        <!-- Name Title -->
+        <h1 class="hero-title mb-2">
+          Prawin
+        </h1>
+        
+        <!-- Role Subtitle -->
+        <h2 class="hero-subtitle mb-4">
+          Lead Full-Stack Engineer
+        </h2>
+
+        <!-- Description -->
+        <p class="hero-desc mb-5">
+          Building robust, performance-optimized, and scalable web applications and solutions. Crafting elegant interfaces with modern web technologies.
+        </p>
+
+        <!-- CTAs -->
+        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-lg-start gap-3">
+          <button (click)="onHireMeClick()" class="btn-premium-primary w-100 w-sm-auto">
+            Hire me <i class="bi bi-arrow-right"></i>
+          </button>
+          <button (click)="onViewWorkClick()" class="btn-premium-secondary w-100 w-sm-auto">
+            My work <i class="bi bi-code-slash"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Graphic/Avatar Column -->
+      <div class="col-lg-5 d-flex justify-content-center order-1 order-lg-2">
+        <div class="avatar-container animate-fade-in-up">
+          <div class="avatar-glow"></div>
+          <div class="avatar-circle">
+            <span class="avatar-letter">P</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="row justify-content-center mt-5 pt-lg-5 animate-fade-in-up">
+      <div class="col-12 col-xl-10">
+        <div class="stats-card">
+          <div class="row g-4 text-center">
+            @for (stat of stats(); track stat.label) {
+              <div class="col-6 col-md-3 stat-item-col">
+                <div class="stat-number">{{ stat.value }}</div>
+                <div class="stat-label">{{ stat.label }}</div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

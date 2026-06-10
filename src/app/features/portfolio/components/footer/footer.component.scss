@@ -1,0 +1,27 @@
+.footer-wrap {
+  background-color: var(--color-bg-main);
+  border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  
+  .dot {
+    color: var(--color-primary);
+  }
+}
+
+.footer-links {
+  display: flex;
+}
+
+.footer-link-item {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+
+  &:hover {
+    color: var(--color-primary) !important;
+  }
+}

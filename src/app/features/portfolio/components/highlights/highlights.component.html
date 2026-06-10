@@ -1,0 +1,37 @@
+<section id="highlights" class="highlights-section py-5 position-relative">
+  <!-- Decorative Ambient Blob -->
+  <div class="ambient-blur ambient-purple" style="opacity: 0.05; left: 50%; top: 30%;"></div>
+
+  <div class="container relative-content py-4">
+    <!-- Header -->
+    <div class="section-header animate-fade-in-up">
+      <span class="section-subtitle">Contributions</span>
+      <h2 class="section-title text-gradient">Impact highlights</h2>
+      <p class="section-desc">
+        A brief overview of how I create value beyond shipping code, through mentoring, community, and best practices.
+      </p>
+    </div>
+
+    <!-- Highlights Grid -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+      @for (item of highlights(); track item.title) {
+        <div class="col animate-fade-in-up">
+          <div class="premium-card h-100 d-flex flex-column align-items-center text-center p-4">
+            <!-- Icon -->
+            <div class="highlight-icon-circle mb-4" [ngClass]="item.colorClass">
+              <i class="bi" [ngClass]="item.iconClass"></i>
+            </div>
+
+            <!-- Title -->
+            <h3 class="highlight-title mb-2">{{ item.title }}</h3>
+            
+            <!-- Description -->
+            <p class="highlight-desc mb-0 text-muted">
+              {{ item.description }}
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

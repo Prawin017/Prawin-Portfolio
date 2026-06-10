@@ -1,0 +1,121 @@
+.contact-section {
+  background-color: var(--color-bg-main);
+}
+
+.relative-content {
+  position: relative;
+  z-index: 10;
+}
+
+.contact-icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+
+  &.bg-purple-light {
+    background-color: rgba(124, 58, 237, 0.08);
+    color: var(--color-primary);
+  }
+
+  &.bg-blue-light {
+    background-color: rgba(59, 130, 246, 0.08);
+    color: #2563EB;
+  }
+
+  &.bg-green-light {
+    background-color: rgba(16, 185, 129, 0.08);
+    color: #059669;
+  }
+}
+
+.contact-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.contact-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  word-break: break-all;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.contact-value-static {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+.social-circle-link {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+
+  &:hover {
+    background: var(--gradient-primary);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+  }
+}
+
+/* Form Styling */
+.form-input {
+  background-color: #F8FAFC;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+  transition: var(--transition-smooth);
+
+  &::placeholder {
+    color: #A0AEC0;
+  }
+
+  &:focus {
+    background-color: white;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+    outline: none;
+  }
+
+  &.is-invalid {
+    border-color: #EF4444;
+    background-color: rgba(239, 68, 68, 0.01);
+
+    &:focus {
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+    }
+  }
+}
+
+.invalid-feedback {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #EF4444;
+  margin-top: 6px;
+}

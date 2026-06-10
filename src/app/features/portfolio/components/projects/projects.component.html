@@ -1,0 +1,74 @@
+<section id="work" class="projects-section py-5 position-relative">
+  <!-- Decorative Ambient Blob -->
+  <div class="ambient-blur ambient-pink" style="opacity: 0.08; left: auto; right: 10%; top: 20%;"></div>
+
+  <div class="container relative-content py-4">
+    <!-- Header -->
+    <div class="section-header animate-fade-in-up">
+      <span class="section-subtitle">Projects</span>
+      <h2 class="section-title text-gradient">Featured work</h2>
+      <p class="section-desc">
+        A selection of my recent works, showing full-stack builds, UI widgets, and frontend optimization.
+      </p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="d-flex justify-content-center mb-5 animate-fade-in-up">
+      <div class="filter-tabs-bar p-1 d-flex gap-1 align-items-center">
+        @for (category of categories(); track category) {
+          <button 
+            (click)="selectCategory(category)" 
+            class="filter-tab-btn" 
+            [class.active]="selectedCategory() === category">
+            {{ category }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+      @for (project of projects(); track project.id) {
+        <div class="col animate-fade-in-up">
+          <div class="premium-card h-100 d-flex flex-column p-4">
+            <!-- Header Row -->
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <div class="project-icon-circle" [ngClass]="getProjectIconBg(project.id)">
+                <i class="bi" [ngClass]="getProjectIcon(project.id)"></i>
+              </div>
+              <span class="custom-badge" [ngClass]="project.badgeClass">
+                {{ project.badge }}
+              </span>
+            </div>
+
+            <!-- Title & Info -->
+            <h3 class="project-title mb-2">{{ project.title }}</h3>
+            
+            <p class="project-desc mb-4 text-muted">
+              {{ project.description }}
+            </p>
+
+            <!-- Links Row -->
+            <div class="d-flex align-items-center gap-3 mb-4 mt-auto">
+              <a href="#" class="demo-link" (click)="$event.preventDefault()">
+                Visit Demo <i class="bi bi-arrow-up-right"></i>
+              </a>
+              <a href="#" class="github-link" (click)="$event.preventDefault()">
+                <i class="bi bi-github"></i> Repository
+              </a>
+            </div>
+
+            <!-- Tags List -->
+            <div class="tags-list d-flex flex-wrap gap-2 pt-3 border-top">
+              @for (tag of project.tags; track tag) {
+                <span class="tag-item">
+                  {{ tag }}
+                </span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

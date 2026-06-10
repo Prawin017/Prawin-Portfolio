@@ -1,0 +1,41 @@
+<app-header></app-header>
+<main>
+  <!-- Hero Section -->
+  <app-hero 
+    [stats]="stats()" 
+    (hireMe)="scrollTo('contact')" 
+    (viewWork)="scrollTo('work')">
+  </app-hero>
+  
+  <!-- Endless Skill Ticker Banner -->
+  <app-ticker [items]="tickerItems()"></app-ticker>
+  
+  <!-- Category Tech Stack Section -->
+  <app-tech-stack [categories]="skillCategories()"></app-tech-stack>
+  
+  <!-- Vertical Career Experience Timeline -->
+  <app-experience [experiences]="experiences()"></app-experience>
+  
+  <!-- Project Grid with Real-time Filters -->
+  <app-projects 
+    [projects]="filteredProjects()" 
+    [categories]="categories()" 
+    [selectedCategory]="selectedCategory()" 
+    (categorySelected)="onCategorySelect($event)">
+  </app-projects>
+  
+  <!-- Contribution & Impact Highlights -->
+  <app-highlights [highlights]="highlights()"></app-highlights>
+  
+  <!-- Technical Competency Progress Bars -->
+  <app-proficiency [proficiencies]="skillProficiencies()"></app-proficiency>
+  
+  <!-- Reactive Contact Form & Details -->
+  <app-contact 
+    [contactInfo]="contactInfo()" 
+    [submitState]="submitState()" 
+    [errorMessage]="errorMessage()" 
+    (formSubmitted)="handleContactSubmit($event)">
+  </app-contact>
+</main>
+<app-footer></app-footer>

@@ -1,0 +1,22 @@
+<div class="ticker-container py-3">
+  <div class="ticker-track">
+    <!-- Track 1 -->
+    <div class="ticker-content">
+      @for (item of items(); track $index) {
+        <span class="ticker-item">
+          {{ item }}
+          <span class="separator">✦</span>
+        </span>
+      }
+    </div>
+    <!-- Track 2 (seamless duplication) -->
+    <div class="ticker-content" aria-hidden="true">
+      @for (item of items(); track $index) {
+        <span class="ticker-item">
+          {{ item }}
+          <span class="separator">✦</span>
+        </span>
+      }
+    </div>
+  </div>
+</div>

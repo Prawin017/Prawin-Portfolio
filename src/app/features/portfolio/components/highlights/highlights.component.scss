@@ -1,0 +1,67 @@
+.highlights-section {
+  background-color: var(--color-bg-main);
+}
+
+.relative-content {
+  position: relative;
+  z-index: 10;
+}
+
+.highlight-icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  border: 1px solid transparent;
+
+  &.orange {
+    background-color: rgba(245, 158, 11, 0.08);
+    color: #D97706;
+    border-color: rgba(245, 158, 11, 0.15);
+  }
+
+  &.blue {
+    background-color: rgba(59, 130, 246, 0.08);
+    color: #2563EB;
+    border-color: rgba(59, 130, 246, 0.15);
+  }
+
+  &.purple {
+    background-color: rgba(124, 58, 237, 0.08);
+    color: var(--color-primary);
+    border-color: rgba(124, 58, 237, 0.15);
+  }
+
+  &.teal {
+    background-color: rgba(20, 184, 166, 0.08);
+    color: #0D9488;
+    border-color: rgba(20, 184, 166, 0.15);
+  }
+
+  &.green {
+    background-color: rgba(16, 185, 129, 0.08);
+    color: #059669;
+    border-color: rgba(16, 185, 129, 0.15);
+  }
+
+  &.pink {
+    background-color: rgba(236, 72, 153, 0.08);
+    color: #DB2777;
+    border-color: rgba(236, 72, 153, 0.15);
+  }
+}
+
+.highlight-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  letter-spacing: -0.01em;
+}
+
+.highlight-desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+}

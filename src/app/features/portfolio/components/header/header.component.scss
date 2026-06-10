@@ -1,0 +1,113 @@
+.header-nav {
+  background: rgba(252, 252, 253, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: var(--transition-smooth);
+  z-index: 1000;
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-dark);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+  
+  .dot {
+    color: var(--color-primary);
+  }
+}
+
+.nav-link-item {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: var(--transition-smooth);
+  position: relative;
+  padding: 4px 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: var(--transition-smooth);
+  }
+
+  &:hover {
+    color: var(--color-primary);
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.btn-resume {
+  background: var(--color-primary);
+  color: white !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  border: 1px solid transparent;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+
+  &:hover {
+    background: transparent;
+    color: var(--color-primary) !important;
+    border-color: var(--color-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.25);
+  }
+}
+
+.mobile-toggle {
+  background: none;
+  border: none;
+  color: var(--color-text-dark);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 65px);
+  background: rgba(252, 252, 253, 0.98);
+  backdrop-filter: blur(12px);
+  z-index: 999;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+  .nav-link-mobile {
+    color: var(--color-text-dark);
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
