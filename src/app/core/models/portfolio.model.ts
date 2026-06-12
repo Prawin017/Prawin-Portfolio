@@ -30,6 +30,8 @@ export interface ProjectItem {
   category: 'Frontend' | 'Full-Stack' | 'Mobile' | 'Other';
   projectUrl?: string;
   githubUrl?: string;
+  projectUrlEnabled?: boolean;
+  githubUrlEnabled?: boolean;
 }
 
 export interface HighlightItem {

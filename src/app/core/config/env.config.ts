@@ -1,3 +1,3 @@
 export const ENV = {
-  apiUrl: 'http://localhost:5000/api'
+  apiUrl: 'https://prawin-portfolio-server.onrender.com'
 };
