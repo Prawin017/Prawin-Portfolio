@@ -2,11 +2,13 @@ import { Component, ChangeDetectionStrategy, input, output } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { ProjectItem } from '../../../../core/models/portfolio.model';
 import { NoBreakHyphenPipe } from '../../../../shared/pipes/no-break-hyphen.pipe';
+import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
+import { MagneticDirective } from '../../../../shared/directives/magnetic.directive';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, NoBreakHyphenPipe],
+  imports: [CommonModule, NoBreakHyphenPipe, ScrollRevealDirective, MagneticDirective],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

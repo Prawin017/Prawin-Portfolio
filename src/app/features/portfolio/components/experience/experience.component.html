@@ -4,7 +4,7 @@
 
   <div class="container relative-content py-4">
     <!-- Header -->
-    <div class="section-header animate-fade-in-up">
+    <div class="section-header" [appScrollReveal]="'slide-up'">
       <span class="section-subtitle">Career Path</span>
       <h2 class="section-title text-gradient">Professional journey</h2>
       <p class="section-desc">
@@ -18,7 +18,7 @@
       <div class="timeline-line"></div>
 
       @for (exp of experiences(); track exp.id) {
-      <div class="timeline-item animate-fade-in-up">
+      <div class="timeline-item" [appScrollReveal]="'slide-up'" [delay]="$index * 150">
         <!-- Timeline Indicator Dot -->
         <div class="timeline-dot" [ngClass]="getDotClass($index)">
           <div class="dot-inner"></div>

@@ -2,11 +2,12 @@ import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExperienceItem } from '../../../../core/models/portfolio.model';
 import { NoBreakHyphenPipe } from '../../../../shared/pipes/no-break-hyphen.pipe';
+import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule, NoBreakHyphenPipe],
+  imports: [CommonModule, NoBreakHyphenPipe, ScrollRevealDirective],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

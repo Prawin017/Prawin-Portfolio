@@ -28,10 +28,15 @@
 }
 
 .progress-fill-bar {
+  width: 0%;
   height: 100%;
   border-radius: 20px;
-  transition: width 1s ease-in-out;
+  transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
+
+  :host ::ng-deep .reveal-visible & {
+    width: var(--progress-width, 0%) !important;
+  }
   
   &::after {
     content: '';

@@ -1,0 +1,7 @@
+@if (!isHidden()) {
+  <div 
+    class="custom-cursor-follower" 
+    [ngClass]="{ 'visible': isVisible(), 'hovered': isHovered() }">
+    <div class="cursor-dot"></div>
+  </div>
+}

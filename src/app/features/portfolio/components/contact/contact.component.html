@@ -4,7 +4,7 @@
 
   <div class="container relative-content py-4">
     <!-- Header -->
-    <div class="section-header animate-fade-in-up">
+    <div class="section-header" [appScrollReveal]="'slide-up'">
       <span class="section-subtitle">Get In Touch</span>
       <h2 class="section-title text-gradient">Let's build together</h2>
       <p class="section-desc">
@@ -14,7 +14,7 @@
 
     <div class="row g-5">
       <!-- Left Column (Contact Details) -->
-      <div class="col-lg-5 order-2 order-lg-1 animate-fade-in-up">
+      <div class="col-lg-5 order-2 order-lg-1" [appScrollReveal]="'slide-right'" [delay]="100">
         <div class="d-flex flex-column gap-4">
           <!-- Email -->
           <div class="premium-card p-4 d-flex align-items-center gap-4">
@@ -53,13 +53,13 @@
           <div class="premium-card p-4 text-center">
             <h4 class="mb-3 text-start font-heading h5">Connect on Socials</h4>
             <div class="d-flex justify-content-start gap-3 mt-2">
-              <a [href]="contactInfo().github" target="_blank" class="social-circle-link" aria-label="GitHub">
+              <a [href]="contactInfo().github" target="_blank" class="social-circle-link" aria-label="GitHub" appMagnetic [magneticStrength]="0.25">
                 <i class="bi bi-github"></i>
               </a>
-              <a [href]="contactInfo().linkedin" target="_blank" class="social-circle-link" aria-label="LinkedIn">
+              <a [href]="contactInfo().linkedin" target="_blank" class="social-circle-link" aria-label="LinkedIn" appMagnetic [magneticStrength]="0.25">
                 <i class="bi bi-linkedin"></i>
               </a>
-              <a [href]="contactInfo().twitter" target="_blank" class="social-circle-link" aria-label="Twitter">
+              <a [href]="contactInfo().twitter" target="_blank" class="social-circle-link" aria-label="Twitter" appMagnetic [magneticStrength]="0.25">
                 <i class="bi bi-twitter-x"></i>
               </a>
             </div>
@@ -68,7 +68,7 @@
       </div>
 
       <!-- Right Column (Contact Form) -->
-      <div class="col-lg-7 order-1 order-lg-2 animate-fade-in-up">
+      <div class="col-lg-7 order-1 order-lg-2" [appScrollReveal]="'slide-left'" [delay]="200">
         <div class="premium-card p-4 p-md-5">
           <h3 class="font-heading mb-4 h4 text-gradient">Send a message</h3>
           
@@ -146,6 +146,8 @@
             <button 
               type="submit" 
               class="btn-premium-primary w-100 justify-content-center py-3"
+              appMagnetic
+              [magneticStrength]="0.2"
               [disabled]="submitState() === 'submitting' || contactForm.invalid">
               @if (submitState() === 'submitting') {
                 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>

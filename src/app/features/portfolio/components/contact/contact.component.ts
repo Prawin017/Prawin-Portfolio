@@ -2,11 +2,13 @@ import { Component, ChangeDetectionStrategy, input, output, inject, effect } fro
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ContactForm, ContactInfo } from '../../../../core/models/portfolio.model';
+import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
+import { MagneticDirective } from '../../../../shared/directives/magnetic.directive';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ScrollRevealDirective, MagneticDirective],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

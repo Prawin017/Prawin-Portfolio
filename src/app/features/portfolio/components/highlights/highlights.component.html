@@ -4,7 +4,7 @@
 
   <div class="container relative-content py-4">
     <!-- Header -->
-    <div class="section-header animate-fade-in-up">
+    <div class="section-header" [appScrollReveal]="'slide-up'">
       <span class="section-subtitle">Contributions</span>
       <h2 class="section-title text-gradient">Impact highlights</h2>
       <p class="section-desc">
@@ -16,7 +16,7 @@
     <!-- Highlights Grid -->
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
       @for (item of highlights(); track item.title) {
-      <div class="col animate-fade-in-up">
+      <div class="col" [appScrollReveal]="'slide-up'" [delay]="$index * 120">
         <div class="premium-card h-100 d-flex flex-column align-items-center text-center p-4">
           <!-- Icon -->
           <div class="highlight-icon-circle mb-4" [ngClass]="item.colorClass">

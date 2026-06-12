@@ -2,11 +2,18 @@ import { Component, ChangeDetectionStrategy, input, output } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { StatItem, HeroInfo } from '../../../../core/models/portfolio.model';
 import { NoBreakHyphenPipe } from '../../../../shared/pipes/no-break-hyphen.pipe';
+import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
+import { MagneticDirective } from '../../../../shared/directives/magnetic.directive';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, NoBreakHyphenPipe],
+  imports: [
+    CommonModule,
+    NoBreakHyphenPipe,
+    ScrollRevealDirective,
+    MagneticDirective
+  ],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

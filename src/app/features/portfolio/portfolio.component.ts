@@ -17,6 +17,7 @@ import { HighlightsComponent } from './components/highlights/highlights.componen
 import { ProficiencyComponent } from './components/proficiency/proficiency.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CustomCursorComponent } from '../../shared/components/custom-cursor/custom-cursor.component';
 
 @Component({
   selector: 'app-portfolio',
@@ -32,7 +33,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HighlightsComponent,
     ProficiencyComponent,
     ContactComponent,
-    FooterComponent
+    FooterComponent,
+    CustomCursorComponent
   ],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss',

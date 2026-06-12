@@ -71,20 +71,98 @@
   }
 }
 
-.mobile-toggle {
-  background: none;
-  border: none;
-  color: var(--color-text-dark);
-  font-size: 1.5rem;
+.nav-divider {
+  width: 1px;
+  height: 24px;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.theme-selector {
+  padding: 0 4px;
+}
+
+.theme-dot-btn {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  padding: 0;
   cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition-smooth);
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s ease;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    color: var(--color-primary);
+    transform: scale(1.25);
+  }
+
+  &.active {
+    border-color: var(--color-text-dark);
+    transform: scale(1.25);
+  }
+
+  &.lg {
+    width: 28px;
+    height: 28px;
+    
+    &:hover {
+      transform: scale(1.15);
+    }
+
+    &.active {
+      border-color: var(--color-text-dark);
+      transform: scale(1.15);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.mobile-theme-picker {
+  margin: 1.5rem 0;
+  
+  .theme-label-sm {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+}
+
+.mobile-toggle-btn {
+  background: none;
+  border: none;
+  width: 26px;
+  height: 18px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  z-index: 1005;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2.5px;
+    background-color: var(--color-text-dark);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: left center;
+  }
+
+  &.open {
+    span:nth-child(1) {
+      transform: rotate(45deg) translate(3px, 0px);
+    }
+    span:nth-child(2) {
+      width: 0%;
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: rotate(-45deg) translate(3px, 1px);
+    }
   }
 }
 
@@ -98,6 +176,7 @@
   backdrop-filter: blur(12px);
   z-index: 999;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
 
   .nav-link-mobile {
     color: var(--color-text-dark);

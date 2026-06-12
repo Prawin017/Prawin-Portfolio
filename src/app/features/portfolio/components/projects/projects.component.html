@@ -4,7 +4,7 @@
 
   <div class="container relative-content py-4">
     <!-- Header -->
-    <div class="section-header animate-fade-in-up">
+    <div class="section-header" [appScrollReveal]="'slide-up'">
       <span class="section-subtitle">Projects</span>
       <h2 class="section-title text-gradient">Featured work</h2>
       <p class="section-desc">
@@ -14,10 +14,10 @@
     </div>
 
     <!-- Filter Buttons -->
-    <div class="d-flex justify-content-center mb-5 animate-fade-in-up">
+    <div class="d-flex justify-content-center mb-5" [appScrollReveal]="'slide-up'" [delay]="100">
       <div class="filter-tabs-bar p-1 d-flex gap-1 align-items-center">
         @for (category of categories(); track category) {
-        <button (click)="selectCategory(category)" class="filter-tab-btn"
+        <button (click)="selectCategory(category)" class="filter-tab-btn" appMagnetic [magneticStrength]="0.2" [magneticScale]="1.05"
           [class.active]="selectedCategory() === category">
           {{ category | noBreakHyphen }}
         </button>
@@ -28,7 +28,7 @@
     <!-- Projects Grid -->
     <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
       @for (project of projects(); track project.id) {
-      <div class="col animate-fade-in-up">
+      <div class="col" [appScrollReveal]="'slide-up'" [delay]="$index * 120">
         <div class="premium-card h-100 d-flex flex-column p-4">
           <!-- Header Row -->
           <div class="d-flex align-items-center justify-content-between mb-4">
@@ -53,14 +53,18 @@
                [class.disabled]="!project.projectUrlEnabled || !project.projectUrl"
                target="_blank"
                rel="noopener noreferrer"
-               class="demo-link">
+               class="demo-link"
+               appMagnetic
+               [magneticStrength]="0.15">
               Visit Demo <i class="bi bi-arrow-up-right"></i>
             </a>
             <a [attr.href]="project.githubUrlEnabled && project.githubUrl ? project.githubUrl : null"
                [class.disabled]="!project.githubUrlEnabled || !project.githubUrl"
                target="_blank"
                rel="noopener noreferrer"
-               class="github-link">
+               class="github-link"
+               appMagnetic
+               [magneticStrength]="0.15">
               <i class="bi bi-github"></i> Repository
             </a>
           </div>

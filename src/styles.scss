@@ -6,16 +6,65 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
 /* Design System Tokens */
-:root {
-  --font-heading: 'Outfit', 'Plus Jakarta Sans', -apple-system, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
-
-  /* Color Palette */
+:root, .theme-violet {
   --color-primary: #7C3AED;      /* Rich violet */
   --color-primary-rgb: 124, 58, 237;
   --color-secondary: #4F46E5;    /* Deep Indigo */
   --color-secondary-rgb: 79, 70, 229;
   --color-accent: #EC4899;       /* Pink */
+  --gradient-primary: linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%);
+  --gradient-glow: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, rgba(79, 70, 229, 0.02) 70%, transparent 100%);
+  --gradient-pink-purple: linear-gradient(135deg, #EC4899 0%, #7C3AED 100%);
+}
+
+.theme-pink {
+  --color-primary: #DB2777;      /* Vivid Pink */
+  --color-primary-rgb: 219, 39, 119;
+  --color-secondary: #7C3AED;    /* Purple */
+  --color-secondary-rgb: 124, 58, 237;
+  --color-accent: #F43F5E;       /* Rose */
+  --gradient-primary: linear-gradient(135deg, #DB2777 0%, #7C3AED 100%);
+  --gradient-glow: radial-gradient(circle, rgba(219, 39, 119, 0.08) 0%, rgba(124, 58, 237, 0.02) 70%, transparent 100%);
+  --gradient-pink-purple: linear-gradient(135deg, #F43F5E 0%, #DB2777 100%);
+}
+
+.theme-emerald {
+  --color-primary: #059669;      /* Emerald */
+  --color-primary-rgb: 5, 150, 105;
+  --color-secondary: #0D9488;    /* Teal */
+  --color-secondary-rgb: 13, 148, 136;
+  --color-accent: #10B981;       /* Medium emerald */
+  --gradient-primary: linear-gradient(135deg, #059669 0%, #0D9488 100%);
+  --gradient-glow: radial-gradient(circle, rgba(5, 150, 105, 0.08) 0%, rgba(13, 148, 136, 0.02) 70%, transparent 100%);
+  --gradient-pink-purple: linear-gradient(135deg, #10B981 0%, #059669 100%);
+}
+
+.theme-amber {
+  --color-primary: #D97706;      /* Amber */
+  --color-primary-rgb: 217, 119, 6;
+  --color-secondary: #EA580C;    /* Orange */
+  --color-secondary-rgb: 234, 88, 12;
+  --color-accent: #F59E0B;       /* Amber light */
+  --gradient-primary: linear-gradient(135deg, #D97706 0%, #EA580C 100%);
+  --gradient-glow: radial-gradient(circle, rgba(217, 119, 6, 0.08) 0%, rgba(234, 88, 12, 0.02) 70%, transparent 100%);
+  --gradient-pink-purple: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+
+.theme-blue {
+  --color-primary: #2563EB;      /* Blue */
+  --color-primary-rgb: 37, 99, 235;
+  --color-secondary: #0D9488;    /* Teal */
+  --color-secondary-rgb: 13, 148, 136;
+  --color-accent: #3B82F6;       /* Blue light */
+  --gradient-primary: linear-gradient(135deg, #2563EB 0%, #0D9488 100%);
+  --gradient-glow: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(13, 148, 136, 0.02) 70%, transparent 100%);
+  --gradient-pink-purple: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+}
+
+:root {
+  --font-heading: 'Outfit', 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+
   --color-success: #10B981;      /* Emerald Green */
   --color-warning: #F59E0B;      /* Amber Orange */
   
@@ -31,14 +80,14 @@
   
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-  --gradient-glow: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, rgba(79, 70, 229, 0.02) 70%, transparent 100%);
-  --gradient-pink-purple: linear-gradient(135deg, #EC4899 0%, #7C3AED 100%);
+  --gradient-glow: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.08) 0%, rgba(var(--color-secondary-rgb), 0.02) 70%, transparent 100%);
+  --gradient-pink-purple: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
   
   /* Shadows & Radius */
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 8px -1px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 10px 30px -5px rgba(124, 58, 237, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
-  --shadow-hover: 0 20px 40px -10px rgba(124, 58, 237, 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 30px -5px rgba(var(--color-primary-rgb), 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
+  --shadow-hover: 0 20px 40px -10px rgba(var(--color-primary-rgb), 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
   
   --radius-sm: 8px;
   --radius-md: 16px;
@@ -301,6 +350,118 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-fade-in-up {
   animation: fadeInUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+/* Scroll-driven reveal animations (scrolling up/down) */
+.reveal-item {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-slide-up {
+  transform: translateY(50px);
+}
+
+.reveal-slide-down {
+  transform: translateY(-50px);
+}
+
+.reveal-slide-left {
+  transform: translateX(-50px);
+}
+
+.reveal-slide-right {
+  transform: translateX(50px);
+}
+
+.reveal-scale {
+  transform: scale(0.9);
+}
+
+.reveal-flip {
+  transform: perspective(1000px) rotateX(-15deg);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translate(0) scale(1) rotate(0) !important;
+}
+
+/* Staggered Delay classes */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* Drifting animation for ambient blobs */
+@keyframes drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.15);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.ambient-blur {
+  animation: drift 22s infinite ease-in-out alternate;
+}
+
+.ambient-purple {
+  animation-duration: 25s;
+}
+
+.ambient-pink {
+  animation-duration: 18s;
+  animation-delay: -5s;
+}
+
+.ambient-green {
+  animation-duration: 22s;
+  animation-delay: -10s;
+}
+
+/* Smooth transitions for theme change */
+body {
+  transition: background-color 0.5s ease, color 0.3s ease;
+}
+
+/* Custom progress bar on header */
+.scroll-progress-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: var(--gradient-primary);
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
+/* Header scroll shrink and shadow effect */
+.header-nav.header-scrolled {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  box-shadow: 0 10px 30px -10px rgba(var(--color-primary-rgb), 0.15);
+  background: rgba(252, 252, 253, 0.92);
+  border-bottom-color: rgba(var(--color-primary-rgb), 0.1);
 }
 
 /* Responsive adjusters */

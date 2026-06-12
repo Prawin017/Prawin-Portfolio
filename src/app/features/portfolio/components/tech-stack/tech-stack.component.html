@@ -4,7 +4,7 @@
 
   <div class="container relative-content py-4">
     <!-- Header -->
-    <div class="section-header animate-fade-in-up">
+    <div class="section-header" [appScrollReveal]="'slide-up'">
       <span class="section-subtitle">Skills</span>
       <h2 class="section-title text-gradient">My tech stack</h2>
       <p class="section-desc">
@@ -17,7 +17,7 @@
     <!-- Cards Grid -->
     <div class="row g-4 justify-content-center">
       @for (category of categories(); track category.title) {
-      <div class="col-md-6 col-xl-3 animate-fade-in-up">
+      <div class="col-md-6 col-xl-3" [appScrollReveal]="'slide-up'" [delay]="$index * 120">
         <div class="premium-card h-100 d-flex flex-column">
           <!-- Card Header -->
           <div class="d-flex align-items-center gap-3 mb-4">

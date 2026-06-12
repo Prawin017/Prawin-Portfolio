@@ -4,7 +4,7 @@
 
   <div class="container relative-content py-4">
     <!-- Header -->
-    <div class="section-header animate-fade-in-up">
+    <div class="section-header" [appScrollReveal]="'slide-up'">
       <span class="section-subtitle">Competence</span>
       <h2 class="section-title text-gradient">Technology proficiency</h2>
       <p class="section-desc">
@@ -15,7 +15,7 @@
     <!-- Proficiency Bars Grid -->
     <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
       @for (skill of proficiencies(); track skill.name) {
-        <div class="col animate-fade-in-up">
+        <div class="col" [appScrollReveal]="'slide-up'" [delay]="$index * 100" [style.--progress-width.%]="skill.level">
           <div class="premium-card p-4">
             <!-- Label Row -->
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -27,7 +27,6 @@
             <div class="progress-track-bar">
               <div 
                 class="progress-fill-bar" 
-                [style.width.%]="skill.level" 
                 [style.background]="skill.color">
               </div>
             </div>
