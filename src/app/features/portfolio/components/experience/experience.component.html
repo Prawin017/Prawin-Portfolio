@@ -6,9 +6,10 @@
     <!-- Header -->
     <div class="section-header animate-fade-in-up">
       <span class="section-subtitle">Career Path</span>
-      <h2 class="section-title text-gradient">Where I've built things</h2>
+      <h2 class="section-title text-gradient">Professional journey</h2>
       <p class="section-desc">
-        A timeline of my professional roles, achievements, and key technological contributions.
+        A timeline of my growth from intern to software engineer, delivering enterprise applications and scalable
+        digital solutions.
       </p>
     </div>
 
@@ -17,37 +18,38 @@
       <div class="timeline-line"></div>
 
       @for (exp of experiences(); track exp.id) {
-        <div class="timeline-item animate-fade-in-up">
-          <!-- Timeline Indicator Dot -->
-          <div class="timeline-dot" [ngClass]="getDotClass($index)">
-            <div class="dot-inner"></div>
+      <div class="timeline-item animate-fade-in-up">
+        <!-- Timeline Indicator Dot -->
+        <div class="timeline-dot" [ngClass]="getDotClass($index)">
+          <div class="dot-inner"></div>
+        </div>
+
+        <!-- Timeline Content Card -->
+        <div class="timeline-content-card" [ngClass]="getTimelineBorderClass($index)">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-md-between align-items-start align-items-md-center gap-3 mb-3">
+            <div>
+              <h3 class="role-title mb-1">{{ exp.role | noBreakHyphen }}</h3>
+              <span class="company-name text-gradient">{{ exp.company | noBreakHyphen }}</span>
+            </div>
+            <span class="timeline-badge" [ngClass]="getDotClass($index)">
+              {{ exp.timeline }}
+            </span>
           </div>
 
-          <!-- Timeline Content Card -->
-          <div class="timeline-content-card" [ngClass]="getTimelineBorderClass($index)">
-            <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-start align-items-md-center gap-3 mb-3">
-              <div>
-                <h3 class="role-title mb-1">{{ exp.role }}</h3>
-                <span class="company-name text-gradient">{{ exp.company }}</span>
-              </div>
-              <span class="timeline-badge" [ngClass]="getDotClass($index)">
-                {{ exp.timeline }}
-              </span>
-            </div>
+          <p class="role-desc mb-4">
+            {{ exp.description | noBreakHyphen }}
+          </p>
 
-            <p class="role-desc mb-4">
-              {{ exp.description }}
-            </p>
-
-            <div class="tags-list d-flex flex-wrap gap-2">
-              @for (tag of exp.tags; track tag) {
-                <span class="tag-item">
-                  {{ tag }}
-                </span>
-              }
-            </div>
+          <div class="tags-list d-flex flex-wrap gap-2">
+            @for (tag of exp.tags; track tag) {
+            <span class="tag-item">
+              {{ tag }}
+            </span>
+            }
           </div>
         </div>
+      </div>
       }
     </div>
   </div>

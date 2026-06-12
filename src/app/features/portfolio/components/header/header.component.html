@@ -2,7 +2,7 @@
   <div class="container py-3 d-flex align-items-center justify-content-between">
     <!-- Logo -->
     <a href="#" class="logo-text" (click)="scrollToSection('about', $event)">
-      Prawin<span class="dot">.</span>
+      Prawin's Portfolio<span class="dot">.</span>
     </a>
 
     <!-- Desktop Navigation Links -->
@@ -26,14 +26,15 @@
 
   <!-- Mobile Drawer Menu -->
   @if (isMobileMenuOpen()) {
-    <div class="mobile-drawer d-md-none animate-fade-in-up">
-      <nav class="d-flex flex-column align-items-center gap-4 py-5">
-        <a href="#about" class="nav-link-mobile" (click)="scrollToSection('about', $event)">About</a>
-        <a href="#skills" class="nav-link-mobile" (click)="scrollToSection('skills', $event)">Skills</a>
-        <a href="#work" class="nav-link-mobile" (click)="scrollToSection('work', $event)">Work</a>
-        <a href="#contact" class="nav-link-mobile" (click)="scrollToSection('contact', $event)">Contact</a>
-        <a href="#contact" class="btn-resume mt-3 w-75 text-center" (click)="scrollToSection('contact', $event)">Hire me</a>
-      </nav>
-    </div>
+  <div class="mobile-drawer d-md-none animate-fade-in-up">
+    <nav class="d-flex flex-column align-items-center gap-4 py-5">
+      <a href="#about" class="nav-link-mobile" (click)="scrollToSection('about', $event)">About</a>
+      <a href="#skills" class="nav-link-mobile" (click)="scrollToSection('skills', $event)">Skills</a>
+      <a href="#work" class="nav-link-mobile" (click)="scrollToSection('work', $event)">Work</a>
+      <a href="#contact" class="nav-link-mobile" (click)="scrollToSection('contact', $event)">Contact</a>
+      <a href="#contact" class="btn-resume mt-3 w-75 text-center" (click)="scrollToSection('contact', $event)">Hire
+        me</a>
+    </nav>
+  </div>
   }
 </header>

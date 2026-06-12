@@ -8,33 +8,35 @@
       <span class="section-subtitle">Skills</span>
       <h2 class="section-title text-gradient">My tech stack</h2>
       <p class="section-desc">
-        All technologies, frameworks and tools I use to build robust and scalable applications.
+        Technologies, tools, and engineering practices I use to design, develop, test, and deliver scalable web
+        applications and
+        client-focused solutions.
       </p>
     </div>
 
     <!-- Cards Grid -->
     <div class="row g-4 justify-content-center">
       @for (category of categories(); track category.title) {
-        <div class="col-md-6 col-xl-3 animate-fade-in-up">
-          <div class="premium-card h-100 d-flex flex-column">
-            <!-- Card Header -->
-            <div class="d-flex align-items-center gap-3 mb-4">
-              <div class="category-icon-wrapper" [ngClass]="category.badgeClass">
-                <i class="bi" [ngClass]="category.icon"></i>
-              </div>
-              <h3 class="category-title mb-0">{{ category.title }}</h3>
+      <div class="col-md-6 col-xl-3 animate-fade-in-up">
+        <div class="premium-card h-100 d-flex flex-column">
+          <!-- Card Header -->
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <div class="category-icon-wrapper" [ngClass]="category.badgeClass">
+              <i class="bi" [ngClass]="category.icon"></i>
             </div>
+            <h3 class="category-title mb-0">{{ category.title }}</h3>
+          </div>
 
-            <!-- Card Body (Tag List) -->
-            <div class="skills-list d-flex flex-wrap gap-2 mt-auto">
-              @for (skill of category.skills; track skill) {
-                <span class="skill-tag" [ngClass]="category.badgeClass">
-                  {{ skill }}
-                </span>
-              }
-            </div>
+          <!-- Card Body (Tag List) -->
+          <div class="skills-list d-flex flex-wrap gap-2 mt-auto">
+            @for (skill of category.skills; track skill) {
+            <span class="skill-tag" [ngClass]="category.badgeClass">
+              {{ skill }}
+            </span>
+            }
           </div>
         </div>
+      </div>
       }
     </div>
   </div>

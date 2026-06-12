@@ -1,11 +1,12 @@
 import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectItem } from '../../../../core/models/portfolio.model';
+import { NoBreakHyphenPipe } from '../../../../shared/pipes/no-break-hyphen.pipe';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NoBreakHyphenPipe],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

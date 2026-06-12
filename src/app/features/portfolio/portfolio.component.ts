@@ -52,6 +52,7 @@ export class PortfolioComponent {
   highlights = this.service.getHighlights();
   skillProficiencies = this.service.getSkillProficiencies();
   contactInfo = this.service.getContactInfo();
+  heroInfo = this.service.getHeroInfo();
 
   /* Get Store State Signals */
   selectedCategory = this.store.selectedCategory;

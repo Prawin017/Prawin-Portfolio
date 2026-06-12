@@ -1,11 +1,12 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExperienceItem } from '../../../../core/models/portfolio.model';
+import { NoBreakHyphenPipe } from '../../../../shared/pipes/no-break-hyphen.pipe';
 
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NoBreakHyphenPipe],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

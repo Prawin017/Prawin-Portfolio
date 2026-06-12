@@ -10,27 +10,28 @@
         <!-- Badge -->
         <div class="mb-4">
           <span class="custom-badge badge-purple">
-            <i class="bi bi-briefcase-fill"></i> Open to Full-Time Roles
+            <i class="bi bi-briefcase-fill"></i> {{ heroInfo().badgeText | noBreakHyphen }}
           </span>
         </div>
 
         <!-- Name Title -->
         <h1 class="hero-title mb-2">
-          Prawin
+          {{ heroInfo().name }}
         </h1>
-        
+
         <!-- Role Subtitle -->
         <h2 class="hero-subtitle mb-4">
-          Lead Full-Stack Engineer
+          {{ heroInfo().role | noBreakHyphen }}
         </h2>
 
         <!-- Description -->
         <p class="hero-desc mb-5">
-          Building robust, performance-optimized, and scalable web applications and solutions. Crafting elegant interfaces with modern web technologies.
+          {{ heroInfo().description | noBreakHyphen }}
         </p>
 
         <!-- CTAs -->
-        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-lg-start gap-3">
+        <div
+          class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-lg-start gap-3">
           <button (click)="onHireMeClick()" class="btn-premium-primary w-100 w-sm-auto">
             Hire me <i class="bi bi-arrow-right"></i>
           </button>
@@ -45,7 +46,7 @@
         <div class="avatar-container animate-fade-in-up">
           <div class="avatar-glow"></div>
           <div class="avatar-circle">
-            <span class="avatar-letter">P</span>
+            <span class="avatar-letter">{{ heroInfo().avatarLetter || 'P' }}</span>
           </div>
         </div>
       </div>
@@ -57,10 +58,10 @@
         <div class="stats-card">
           <div class="row g-4 text-center">
             @for (stat of stats(); track stat.label) {
-              <div class="col-6 col-md-3 stat-item-col">
-                <div class="stat-number">{{ stat.value }}</div>
-                <div class="stat-label">{{ stat.label }}</div>
-              </div>
+            <div class="col-6 col-md-3 stat-item-col">
+              <div class="stat-number">{{ stat.value }}</div>
+              <div class="stat-label">{{ stat.label }}</div>
+            </div>
             }
           </div>
         </div>

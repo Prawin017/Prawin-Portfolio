@@ -1,6 +1,7 @@
-import { Injectable, signal } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { Injectable, inject, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ENV } from '../config/env.config';
 import { 
   ContactForm, 
   ExperienceItem, 
@@ -9,31 +10,91 @@ import {
   SkillCategory, 
   SkillProficiency, 
   StatItem, 
-  ContactInfo 
+  ContactInfo,
+  HeroInfo
 } from '../models/portfolio.model';
-import { 
-  EXPERIENCES, 
-  HIGHLIGHTS, 
-  PROJECTS, 
-  SKILL_CATEGORIES, 
-  SKILL_PROFICIENCIES, 
-  STATS_ITEMS, 
-  TICKER_ITEMS,
-  CONTACT_INFO
-} from '../constants/portfolio.constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PortfolioService {
-  private readonly stats = signal<StatItem[]>(STATS_ITEMS);
-  private readonly tickerItems = signal<string[]>(TICKER_ITEMS);
-  private readonly skillCategories = signal<SkillCategory[]>(SKILL_CATEGORIES);
-  private readonly experiences = signal<ExperienceItem[]>(EXPERIENCES);
-  private readonly projects = signal<ProjectItem[]>(PROJECTS);
-  private readonly highlights = signal<HighlightItem[]>(HIGHLIGHTS);
-  private readonly skillProficiencies = signal<SkillProficiency[]>(SKILL_PROFICIENCIES);
-  private readonly contactInfo = signal<ContactInfo>(CONTACT_INFO);
+  private readonly http = inject(HttpClient);
+  private readonly apiUrl = ENV.apiUrl;
+
+  private readonly stats = signal<StatItem[]>([]);
+  private readonly tickerItems = signal<string[]>([]);
+  private readonly skillCategories = signal<SkillCategory[]>([]);
+  private readonly experiences = signal<ExperienceItem[]>([]);
+  private readonly projects = signal<ProjectItem[]>([]);
+  private readonly highlights = signal<HighlightItem[]>([]);
+  private readonly skillProficiencies = signal<SkillProficiency[]>([]);
+  private readonly contactInfo = signal<ContactInfo>({
+    email: '',
+    phone: '',
+    location: '',
+    github: '',
+    linkedin: '',
+    twitter: ''
+  });
+  private readonly heroInfo = signal<HeroInfo>({
+    name: '',
+    role: '',
+    description: '',
+    badgeText: '',
+    avatarLetter: ''
+  });
+
+
+  constructor() {
+    this.loadPortfolioData();
+  }
+
+  private loadPortfolioData() {
+    this.http.get<StatItem[]>(`${this.apiUrl}/stats`).subscribe({
+      next: (data) => this.stats.set(data),
+      error: (err) => console.error('Failed to load stats', err)
+    });
+
+    this.http.get<string[]>(`${this.apiUrl}/ticker`).subscribe({
+      next: (data) => this.tickerItems.set(data),
+      error: (err) => console.error('Failed to load ticker items', err)
+    });
+
+    this.http.get<SkillCategory[]>(`${this.apiUrl}/skill-categories`).subscribe({
+      next: (data) => this.skillCategories.set(data),
+      error: (err) => console.error('Failed to load skill categories', err)
+    });
+
+    this.http.get<ExperienceItem[]>(`${this.apiUrl}/experiences`).subscribe({
+      next: (data) => this.experiences.set(data),
+      error: (err) => console.error('Failed to load experiences', err)
+    });
+
+    this.http.get<ProjectItem[]>(`${this.apiUrl}/projects`).subscribe({
+      next: (data) => this.projects.set(data),
+      error: (err) => console.error('Failed to load projects', err)
+    });
+
+    this.http.get<HighlightItem[]>(`${this.apiUrl}/highlights`).subscribe({
+      next: (data) => this.highlights.set(data),
+      error: (err) => console.error('Failed to load highlights', err)
+    });
+
+    this.http.get<SkillProficiency[]>(`${this.apiUrl}/skill-proficiencies`).subscribe({
+      next: (data) => this.skillProficiencies.set(data),
+      error: (err) => console.error('Failed to load skill proficiencies', err)
+    });
+
+    this.http.get<ContactInfo>(`${this.apiUrl}/contact-info`).subscribe({
+      next: (data) => this.contactInfo.set(data),
+      error: (err) => console.error('Failed to load contact info', err)
+    });
+
+    this.http.get<HeroInfo>(`${this.apiUrl}/hero`).subscribe({
+      next: (data) => this.heroInfo.set(data),
+      error: (err) => console.error('Failed to load hero info', err)
+    });
+  }
 
   getStats() {
     return this.stats.asReadonly();
@@ -67,13 +128,12 @@ export class PortfolioService {
     return this.contactInfo.asReadonly();
   }
 
-  submitContactForm(form: ContactForm): Observable<void> {
-    // Check if user is simulating an error
-    if (form.message.toLowerCase().includes('error') || form.name.toLowerCase().includes('error')) {
-      return throwError(() => new Error('Something went wrong. Please try again later.')).pipe(
-        delay(1500)
-      );
-    }
-    return of(undefined).pipe(delay(1500));
+  getHeroInfo() {
+    return this.heroInfo.asReadonly();
+  }
+
+
+  submitContactForm(form: ContactForm): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/contact`, form);
   }
 }

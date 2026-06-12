@@ -59,3 +59,11 @@ export interface ContactInfo {
   linkedin: string;
   twitter: string;
 }
+
+export interface HeroInfo {
+  name: string;
+  role: string;
+  description: string;
+  badgeText: string;
+  avatarLetter: string;
+}

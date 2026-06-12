@@ -2,6 +2,7 @@
 <main>
   <!-- Hero Section -->
   <app-hero 
+    [heroInfo]="heroInfo()"
     [stats]="stats()" 
     (hireMe)="scrollTo('contact')" 
     (viewWork)="scrollTo('work')">
