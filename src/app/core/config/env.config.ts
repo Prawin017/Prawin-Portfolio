@@ -1,3 +1,8 @@
+const isDevMode = false;
+
 export const ENV = {
-  apiUrl: 'https://prawin-portfolio-server.onrender.com/api',
+  isDevMode,
+  apiUrl: isDevMode 
+    ? 'http://localhost:5000/api' 
+    : 'https://prawin-portfolio-server.onrender.com/api',
 };
