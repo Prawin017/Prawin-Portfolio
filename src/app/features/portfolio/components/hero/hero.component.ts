@@ -47,7 +47,18 @@ export class HeroComponent implements OnInit, OnDestroy {
   }
 
   hireMe = output<void>();
-  viewWork = output<void>();
+
+  // CTA Interactive signals
+  hoveredButton = signal<'none' | 'hire' | 'resume'>('none');
+  resumeDownloaded = signal<boolean>(false);
+
+  onDownloadResumeClick() {
+    this.resumeDownloaded.set(true);
+    // Reset attention animation after 6 seconds
+    setTimeout(() => {
+      this.resumeDownloaded.set(false);
+    }, 6000);
+  }
 
   // Typewriter effect
   displayText = signal<string>('');
@@ -138,10 +149,6 @@ export class HeroComponent implements OnInit, OnDestroy {
 
   onHireMeClick() {
     this.hireMe.emit();
-  }
-
-  onViewWorkClick() {
-    this.viewWork.emit();
   }
 
   // Coffee click handler

@@ -6,7 +6,8 @@
   <div class="container relative-content py-5">
     <div class="row align-items-center justify-content-between g-5">
       <!-- Left Info Column -->
-      <div class="col-lg-7 text-center text-lg-start order-2 order-lg-1" [appScrollReveal]="'slide-right'" [delay]="100">
+      <div class="col-lg-7 text-center text-lg-start order-2 order-lg-1" [appScrollReveal]="'slide-right'"
+        [delay]="100">
         <!-- Badge -->
         <div class="mb-4">
           <span class="custom-badge badge-purple animate-pulse">
@@ -29,15 +30,45 @@
           {{ heroInfo().description | noBreakHyphen }}
         </p>
 
+        <!-- Dynamic CTA Connection Hint -->
+        <div class="cta-hint-wrapper">
+          <span class="cta-hint-text" [class.visible]="hoveredButton() !== 'none' || resumeDownloaded()">
+            <span class="status-dot"></span>
+            @if (resumeDownloaded()) {
+            🎉 Stats acquired! Ready to invite Player 2 to your team? 👇
+            } @else if (hoveredButton() === 'resume') {
+            🔍 Inspect my stats & developer skill tree!
+            } @else if (hoveredButton() === 'hire') {
+            🎮 Ready to start the co-op campaign? Let's team up!
+            }
+          </span>
+        </div>
+
         <!-- CTAs -->
         <div
           class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-lg-start gap-3 mb-5">
-          <button (click)="onHireMeClick()" class="btn-premium-primary w-100 w-sm-auto" appMagnetic [magneticStrength]="0.2">
-            Hire me <i class="bi bi-arrow-right"></i>
+          <button (click)="onHireMeClick()" (mouseenter)="hoveredButton.set('hire')"
+            (mouseleave)="hoveredButton.set('none')" [class.pulse-attention]="resumeDownloaded()"
+            class="btn-premium-primary w-100 w-sm-auto position-relative" appMagnetic [magneticStrength]="0.2">
+            <span class="btn-shimmer"></span>
+            <span class="btn-content">
+              <span class="btn-text">Hire me</span>
+              <i class="bi bi-send btn-icon ms-2"></i>
+            </span>
+            <span class="btn-glow-layer"></span>
           </button>
-          <button (click)="onViewWorkClick()" class="btn-premium-secondary w-100 w-sm-auto" appMagnetic [magneticStrength]="0.2">
-            My work <i class="bi bi-code-slash"></i>
-          </button>
+
+          <a href="resume.pdf" download="Prawin_Resume.pdf" target="_blank" (click)="onDownloadResumeClick()"
+            (mouseenter)="hoveredButton.set('resume')" (mouseleave)="hoveredButton.set('none')"
+            [class.resume-glow]="hoveredButton() === 'resume'"
+            class="btn-premium-secondary w-100 w-sm-auto text-decoration-none position-relative" appMagnetic
+            [magneticStrength]="0.2">
+            <span class="btn-shimmer"></span>
+            <span class="btn-content">
+              <span class="btn-text">Download resume</span>
+              <i class="bi bi-arrow-down-circle btn-icon-download ms-2"></i>
+            </span>
+          </a>
         </div>
 
         <!-- Interactive Fun Deck -->
@@ -50,7 +81,7 @@
               <span class="widget-value">{{ coffeeCount() }} cups brewed</span>
             </div>
             @if (showCoffeeSteam()) {
-              <span class="steam-particle">💨</span>
+            <span class="steam-particle">💨</span>
             }
           </button>
 
@@ -66,7 +97,8 @@
       </div>
 
       <!-- Right Graphic/Avatar Column -->
-      <div class="col-lg-5 d-flex justify-content-center order-1 order-lg-2" [appScrollReveal]="'slide-left'" [delay]="200">
+      <div class="col-lg-5 d-flex justify-content-center order-1 order-lg-2" [appScrollReveal]="'slide-left'"
+        [delay]="200">
         <div class="avatar-magnetic-wrapper" appMagnetic [magneticStrength]="0.15">
           <div class="avatar-container">
             <div class="avatar-glow"></div>
@@ -75,48 +107,39 @@
             </div>
 
             <!-- Floating Interactive Orbiting Badges -->
-            <div class="floating-badge badge-code" 
-                 [class.animating]="showCodeFeedback()"
-                 [attr.data-tooltip]="'Bugs Squashed: ' + bugCount()" 
-                 (click)="clickCode()" 
-                 appMagnetic [magneticStrength]="0.4">
+            <div class="floating-badge badge-code" [class.animating]="showCodeFeedback()"
+              [attr.data-tooltip]="'Bugs Squashed: ' + bugCount()" (click)="clickCode()" appMagnetic
+              [magneticStrength]="0.4">
               <span>💻</span>
               @if (showCodeFeedback()) {
-                <span class="badge-particle">🐛 squash!</span>
+              <span class="badge-particle">🐛 squash!</span>
               }
             </div>
 
-            <div class="floating-badge badge-coffee" 
-                 [class.animating]="showCoffeeSteam()"
-                 [attr.data-tooltip]="'Caffeine: ' + coffeeCount() + ' cups'" 
-                 (click)="clickCoffee()" 
-                 appMagnetic [magneticStrength]="0.4">
+            <div class="floating-badge badge-coffee" [class.animating]="showCoffeeSteam()"
+              [attr.data-tooltip]="'Caffeine: ' + coffeeCount() + ' cups'" (click)="clickCoffee()" appMagnetic
+              [magneticStrength]="0.4">
               <span>☕</span>
               @if (showCoffeeSteam()) {
-                <span class="badge-particle">💨 brew!</span>
+              <span class="badge-particle">💨 brew!</span>
               }
             </div>
 
-            <div class="floating-badge badge-rocket" 
-                 [class.launching]="isRocketLaunching()"
-                 [class.animating]="isRocketLaunching() || showRocketFeedback()"
-                 [attr.data-tooltip]="'Deploys: ' + deployCount()" 
-                 (click)="clickRocket()" 
-                 appMagnetic [magneticStrength]="0.4">
+            <div class="floating-badge badge-rocket" [class.launching]="isRocketLaunching()"
+              [class.animating]="isRocketLaunching() || showRocketFeedback()"
+              [attr.data-tooltip]="'Deploys: ' + deployCount()" (click)="clickRocket()" appMagnetic
+              [magneticStrength]="0.4">
               <span>🚀</span>
               @if (showRocketFeedback()) {
-                <span class="badge-particle">🔥 launch!</span>
+              <span class="badge-particle">🔥 launch!</span>
               }
             </div>
 
-            <div class="floating-badge badge-brain" 
-                 [class.animating]="showBrainFeedback()"
-                 [attr.data-tooltip]="'Ideas: ' + ideaCount()" 
-                 (click)="clickBrain()" 
-                 appMagnetic [magneticStrength]="0.4">
+            <div class="floating-badge badge-brain" [class.animating]="showBrainFeedback()"
+              [attr.data-tooltip]="'Ideas: ' + ideaCount()" (click)="clickBrain()" appMagnetic [magneticStrength]="0.4">
               <span>🧠</span>
               @if (showBrainFeedback()) {
-                <span class="badge-particle">💡 spark!</span>
+              <span class="badge-particle">💡 spark!</span>
               }
             </div>
           </div>

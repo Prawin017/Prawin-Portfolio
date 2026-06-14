@@ -518,3 +518,237 @@
   75% { transform: scale(1.3) rotate(6deg); filter: drop-shadow(0 0 20px rgba(14, 165, 233, 0.95)); border-color: var(--color-secondary); }
   100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 0 transparent); }
 }
+
+/* CTA Synergy Styles */
+.cta-hint-wrapper {
+  min-height: 36px;
+  margin-top: -10px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: flex-start;
+  
+  @media (max-width: 991.98px) {
+    justify-content: center;
+  }
+}
+
+.cta-hint-text {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: rgba(var(--color-primary-rgb), 0.06);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.18);
+  border-radius: 20px;
+  padding: 6px 16px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.06);
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    display: inline-block;
+    animation: blink-dot 1.2s infinite ease-in-out;
+  }
+}
+
+@keyframes blink-dot {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Premium Primary (Hire Me) Override */
+.btn-premium-primary {
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  background-size: 200% auto;
+  border: none;
+  color: white !important;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.3);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  
+  .btn-content {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .btn-text, .btn-icon {
+    transition: all 0.3s ease;
+  }
+  
+  .btn-icon {
+    font-size: 1.15rem;
+  }
+
+  // Large hover radial background glow
+  .btn-glow-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background-position: right center;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(var(--color-primary-rgb), 0.45);
+
+    .btn-icon {
+      transform: translateX(3px) translateY(-2px) rotate(15deg);
+    }
+    
+    .btn-glow-layer {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    
+    .btn-shimmer {
+      left: 100%;
+      transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(0.99);
+  }
+}
+
+/* Premium Secondary (Download Resume) Upgraded Dark Glass / Gradient Theme */
+.btn-premium-secondary {
+  overflow: hidden;
+  position: relative;
+  
+  // Custom Gradient border background technique - creates solid background and gradient border
+  background: linear-gradient(#ffffff, #f8fafc) padding-box,
+              linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) border-box;
+  border: 1.5px solid transparent !important;
+  color: var(--color-text-dark) !important;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  
+  .btn-content {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-text, .btn-icon-download {
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    // Upgraded: solid white background inside gradient border on hover to prevent bleed-through
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+                linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%) border-box;
+    color: var(--color-primary) !important;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(var(--color-primary-rgb), 0.18);
+    
+    .btn-icon-download {
+      transform: translateY(3px);
+    }
+
+    .btn-shimmer {
+      left: 100%;
+      transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+  }
+  
+  &:active {
+    transform: translateY(-1px) scale(0.99);
+  }
+  
+  &.resume-glow {
+    box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.3);
+    border-color: var(--color-primary);
+  }
+}
+
+/* Shimmer Sheen Effect */
+.btn-shimmer {
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Attention Grabber for Hire Me Button */
+.btn-premium-primary.pulse-attention {
+  animation: attention-bounce 1.5s infinite;
+  box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.75), 
+              0 10px 25px rgba(var(--color-primary-rgb), 0.45);
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+}
+
+@keyframes attention-bounce {
+  0% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.75), 0 4px 14px rgba(var(--color-primary-rgb), 0.3);
+  }
+  15% {
+    transform: scale(1.06) translateY(-4px);
+    box-shadow: 0 0 0 10px rgba(var(--color-primary-rgb), 0), 0 10px 25px rgba(var(--color-primary-rgb), 0.45);
+  }
+  30% {
+    transform: scale(0.98) translateY(1px);
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0), 0 4px 14px rgba(var(--color-primary-rgb), 0.3);
+  }
+  45% {
+    transform: scale(1.03) translateY(-2px);
+    box-shadow: 0 0 0 5px rgba(var(--color-primary-rgb), 0), 0 8px 18px rgba(var(--color-primary-rgb), 0.35);
+  }
+  60% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0), 0 4px 14px rgba(var(--color-primary-rgb), 0.3);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
