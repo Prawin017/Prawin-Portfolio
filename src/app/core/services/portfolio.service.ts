@@ -132,6 +132,9 @@ export class PortfolioService {
     return this.heroInfo.asReadonly();
   }
 
+  incrementHeroMetric(metric: 'coffeeCount' | 'bugCount' | 'deployCount' | 'ideaCount'): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/hero/increment`, { metric });
+  }
 
   submitContactForm(form: ContactForm): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/contact`, form);

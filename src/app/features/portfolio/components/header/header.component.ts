@@ -16,25 +16,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isMobileMenuOpen = signal<boolean>(false);
   isScrolled = signal<boolean>(false);
   scrollProgress = signal<number>(0);
-  activeTheme = signal<string>('violet');
-
-  themes = [
-    { name: 'violet', label: 'Violet', color: '#7C3AED' },
-    { name: 'pink', label: 'Pink', color: '#DB2777' },
-    { name: 'emerald', label: 'Emerald', color: '#059669' },
-    { name: 'amber', label: 'Amber', color: '#D97706' },
-    { name: 'blue', label: 'Blue', color: '#2563EB' }
-  ];
 
   private scrollListener: (() => void) | null = null;
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      // Load saved theme
-      const savedTheme = localStorage.getItem('prawin-theme');
-      if (savedTheme) {
-        this.setTheme(savedTheme);
-      }
+      // Remove any legacy theme classes from body
+      const body = document.body;
+      const themeClasses = Array.from(body.classList).filter(c => c.startsWith('theme-'));
+      themeClasses.forEach(c => body.classList.remove(c));
+      localStorage.removeItem('prawin-theme');
 
       // Add scroll listener
       this.scrollListener = () => {
@@ -58,18 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  setTheme(theme: string) {
-    this.activeTheme.set(theme);
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('prawin-theme', theme);
-      
-      const body = document.body;
-      this.themes.forEach(t => {
-        body.classList.remove(`theme-${t.name}`);
-      });
-      body.classList.add(`theme-${theme}`);
-    }
-  }
+
 
   toggleMobileMenu() {
     this.isMobileMenuOpen.update(prev => !prev);

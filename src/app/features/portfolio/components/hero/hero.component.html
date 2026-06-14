@@ -21,22 +21,46 @@
 
         <!-- Role Subtitle -->
         <h2 class="hero-subtitle mb-4 text-gradient">
-          {{ heroInfo().role | noBreakHyphen }}
+          {{ displayText() }}<span class="typewriter-cursor">|</span>
         </h2>
 
         <!-- Description -->
-        <p class="hero-desc mb-5">
+        <p class="hero-desc mb-4">
           {{ heroInfo().description | noBreakHyphen }}
         </p>
 
         <!-- CTAs -->
         <div
-          class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-lg-start gap-3">
+          class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-lg-start gap-3 mb-5">
           <button (click)="onHireMeClick()" class="btn-premium-primary w-100 w-sm-auto" appMagnetic [magneticStrength]="0.2">
             Hire me <i class="bi bi-arrow-right"></i>
           </button>
           <button (click)="onViewWorkClick()" class="btn-premium-secondary w-100 w-sm-auto" appMagnetic [magneticStrength]="0.2">
             My work <i class="bi bi-code-slash"></i>
+          </button>
+        </div>
+
+        <!-- Interactive Fun Deck -->
+        <div class="fun-deck d-flex flex-wrap gap-3 mt-4 pt-2">
+          <!-- Coffee Clicker Widget -->
+          <button class="fun-widget-btn coffee-clicker" (click)="clickCoffee()" appMagnetic [magneticStrength]="0.15">
+            <span class="widget-icon">☕</span>
+            <div class="widget-content text-start">
+              <span class="widget-label">Caffeine Level</span>
+              <span class="widget-value">{{ coffeeCount() }} cups brewed</span>
+            </div>
+            @if (showCoffeeSteam()) {
+              <span class="steam-particle">💨</span>
+            }
+          </button>
+
+          <!-- Fun Fact Widget -->
+          <button class="fun-widget-btn fact-cycler" (click)="nextFact()" appMagnetic [magneticStrength]="0.15">
+            <span class="widget-icon">💡</span>
+            <div class="widget-content text-start">
+              <span class="widget-label">Click for a fun fact</span>
+              <span class="widget-value">{{ funFacts[currentFactIndex()] }}</span>
+            </div>
           </button>
         </div>
       </div>
@@ -47,7 +71,53 @@
           <div class="avatar-container">
             <div class="avatar-glow"></div>
             <div class="avatar-circle">
-              <span class="avatar-letter">{{ heroInfo().avatarLetter || 'P' }}</span>
+              <img src="images/profile.jpg" [alt]="heroInfo().name" class="avatar-img" />
+            </div>
+
+            <!-- Floating Interactive Orbiting Badges -->
+            <div class="floating-badge badge-code" 
+                 [class.animating]="showCodeFeedback()"
+                 [attr.data-tooltip]="'Bugs Squashed: ' + bugCount()" 
+                 (click)="clickCode()" 
+                 appMagnetic [magneticStrength]="0.4">
+              <span>💻</span>
+              @if (showCodeFeedback()) {
+                <span class="badge-particle">🐛 squash!</span>
+              }
+            </div>
+
+            <div class="floating-badge badge-coffee" 
+                 [class.animating]="showCoffeeSteam()"
+                 [attr.data-tooltip]="'Caffeine: ' + coffeeCount() + ' cups'" 
+                 (click)="clickCoffee()" 
+                 appMagnetic [magneticStrength]="0.4">
+              <span>☕</span>
+              @if (showCoffeeSteam()) {
+                <span class="badge-particle">💨 brew!</span>
+              }
+            </div>
+
+            <div class="floating-badge badge-rocket" 
+                 [class.launching]="isRocketLaunching()"
+                 [class.animating]="isRocketLaunching() || showRocketFeedback()"
+                 [attr.data-tooltip]="'Deploys: ' + deployCount()" 
+                 (click)="clickRocket()" 
+                 appMagnetic [magneticStrength]="0.4">
+              <span>🚀</span>
+              @if (showRocketFeedback()) {
+                <span class="badge-particle">🔥 launch!</span>
+              }
+            </div>
+
+            <div class="floating-badge badge-brain" 
+                 [class.animating]="showBrainFeedback()"
+                 [attr.data-tooltip]="'Ideas: ' + ideaCount()" 
+                 (click)="clickBrain()" 
+                 appMagnetic [magneticStrength]="0.4">
+              <span>🧠</span>
+              @if (showBrainFeedback()) {
+                <span class="badge-particle">💡 spark!</span>
+              }
             </div>
           </div>
         </div>

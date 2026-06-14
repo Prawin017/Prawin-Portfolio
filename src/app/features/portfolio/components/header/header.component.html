@@ -1,4 +1,4 @@
-<header class="header-nav sticky-top" [class.header-scrolled]="isScrolled()">
+<header class="header-nav" [class.header-scrolled]="isScrolled()">
   <div class="container py-3 d-flex align-items-center justify-content-between">
     <!-- Logo -->
     <a href="#" class="logo-text" appMagnetic [magneticStrength]="0.15" (click)="scrollToSection('about', $event)">
@@ -14,21 +14,7 @@
         <a href="#contact" class="nav-link-item" appMagnetic [magneticStrength]="0.2" (click)="scrollToSection('contact', $event)">Contact</a>
       </nav>
 
-      <!-- Vertical Divider -->
-      <div class="nav-divider"></div>
 
-      <!-- Accent Theme Selector -->
-      <div class="theme-selector d-flex align-items-center gap-2" title="Choose Accent Color">
-        @for (t of themes; track t.name) {
-          <button 
-            class="theme-dot-btn"
-            [class.active]="activeTheme() === t.name"
-            [style.background-color]="t.color"
-            [attr.aria-label]="'Theme ' + t.label"
-            (click)="setTheme(t.name)">
-          </button>
-        }
-      </div>
 
       <!-- Resume Action Button -->
       <a href="#contact" class="btn-resume" appMagnetic [magneticStrength]="0.25" (click)="scrollToSection('contact', $event)">Hire me</a>
@@ -51,20 +37,7 @@
       <a href="#work" class="nav-link-mobile" (click)="scrollToSection('work', $event)">Work</a>
       <a href="#contact" class="nav-link-mobile" (click)="scrollToSection('contact', $event)">Contact</a>
       
-      <!-- Mobile Theme Selector -->
-      <div class="mobile-theme-picker mt-3 d-flex flex-column align-items-center gap-2">
-        <span class="theme-label-sm">Customize Theme Accent</span>
-        <div class="d-flex gap-3">
-          @for (t of themes; track t.name) {
-            <button 
-              class="theme-dot-btn lg"
-              [class.active]="activeTheme() === t.name"
-              [style.background-color]="t.color"
-              (click)="setTheme(t.name)">
-            </button>
-          }
-        </div>
-      </div>
+
       
       <a href="#contact" class="btn-resume mt-4 w-75 text-center" (click)="scrollToSection('contact', $event)">Hire me</a>
     </nav>

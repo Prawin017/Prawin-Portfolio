@@ -68,4 +68,10 @@ export interface HeroInfo {
   description: string;
   badgeText: string;
   avatarLetter: string;
+  coffeeCount?: number;
+  bugCount?: number;
+  deployCount?: number;
+  ideaCount?: number;
+  roles?: string[];
+  funFacts?: string[];
 }

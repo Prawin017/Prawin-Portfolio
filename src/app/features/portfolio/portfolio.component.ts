@@ -63,7 +63,18 @@ export class PortfolioComponent {
 
   /* Computed Signals for dynamic filtering */
   categories = computed(() => {
-    return ['All', ...Array.from(new Set(this.allProjects().map(p => p.category)))];
+    const order = ['Full-Stack', 'Frontend'];
+    const uniqueCats = Array.from(new Set(this.allProjects().map(p => p.category)));
+    
+    const sortedCats = uniqueCats.sort((a, b) => {
+      const idxA = order.indexOf(a);
+      const idxB = order.indexOf(b);
+      const valA = idxA === -1 ? 999 : idxA;
+      const valB = idxB === -1 ? 999 : idxB;
+      return valA - valB;
+    });
+
+    return ['All', ...sortedCats];
   });
 
   filteredProjects = computed(() => {
