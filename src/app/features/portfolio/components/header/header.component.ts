@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, signal, OnInit, OnDestroy, inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MagneticDirective } from '../../../../shared/directives/magnetic.directive';
+import { PortfolioService } from '../../../../core/services/portfolio.service';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,12 @@ import { MagneticDirective } from '../../../../shared/directives/magnetic.direct
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly portfolioService = inject(PortfolioService);
   
   isMobileMenuOpen = signal<boolean>(false);
   isScrolled = signal<boolean>(false);
   scrollProgress = signal<number>(0);
+  contactInfo = this.portfolioService.getContactInfo();
 
   private scrollListener: (() => void) | null = null;
 

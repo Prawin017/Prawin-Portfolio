@@ -8,20 +8,34 @@
     <!-- Desktop Navigation Links & Action Widgets -->
     <div class="d-none d-md-flex align-items-center gap-4">
       <nav class="d-flex align-items-center gap-4">
-        <a href="#about" class="nav-link-item" appMagnetic [magneticStrength]="0.2" (click)="scrollToSection('about', $event)">About</a>
-        <a href="#skills" class="nav-link-item" appMagnetic [magneticStrength]="0.2" (click)="scrollToSection('skills', $event)">Skills</a>
-        <a href="#work" class="nav-link-item" appMagnetic [magneticStrength]="0.2" (click)="scrollToSection('work', $event)">Work</a>
-        <a href="#contact" class="nav-link-item" appMagnetic [magneticStrength]="0.2" (click)="scrollToSection('contact', $event)">Contact</a>
+        <a href="#about" class="nav-link-item" appMagnetic [magneticStrength]="0.2"
+          (click)="scrollToSection('about', $event)">About</a>
+        <a href="#skills" class="nav-link-item" appMagnetic [magneticStrength]="0.2"
+          (click)="scrollToSection('skills', $event)">Skills</a>
+        <a href="#work" class="nav-link-item" appMagnetic [magneticStrength]="0.2"
+          (click)="scrollToSection('work', $event)">Work</a>
+        <a href="#contact" class="nav-link-item" appMagnetic [magneticStrength]="0.2"
+          (click)="scrollToSection('contact', $event)">Contact</a>
       </nav>
+      <!-- Vertical Divider -->
+      <div class="nav-divider"></div>
 
-
+      <!-- LinkedIn Icon Link -->
+      @if (contactInfo().linkedin) {
+      <a [href]="contactInfo().linkedin" target="_blank" rel="noopener noreferrer" class="nav-linkedin-link" appMagnetic
+        [magneticStrength]="0.2" title="Connect on LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+      }
 
       <!-- Resume Action Button -->
-      <a href="#contact" class="btn-resume" appMagnetic [magneticStrength]="0.25" (click)="scrollToSection('contact', $event)">Hire me</a>
+      <a href="#contact" class="btn-resume" appMagnetic [magneticStrength]="0.25"
+        (click)="scrollToSection('contact', $event)">Hire me</a>
     </div>
 
     <!-- Mobile Hamburger Toggle -->
-    <button class="mobile-toggle-btn d-md-none" [class.open]="isMobileMenuOpen()" (click)="toggleMobileMenu()" aria-label="Toggle Navigation">
+    <button class="mobile-toggle-btn d-md-none" [class.open]="isMobileMenuOpen()" (click)="toggleMobileMenu()"
+      aria-label="Toggle Navigation">
       <span></span>
       <span></span>
       <span></span>
@@ -35,11 +49,16 @@
       <a href="#about" class="nav-link-mobile" (click)="scrollToSection('about', $event)">About</a>
       <a href="#skills" class="nav-link-mobile" (click)="scrollToSection('skills', $event)">Skills</a>
       <a href="#work" class="nav-link-mobile" (click)="scrollToSection('work', $event)">Work</a>
-      <a href="#contact" class="nav-link-mobile" (click)="scrollToSection('contact', $event)">Contact</a>
-      
+      <!-- Mobile LinkedIn Link -->
+      @if (contactInfo().linkedin) {
+      <a [href]="contactInfo().linkedin" target="_blank" rel="noopener noreferrer" class="nav-linkedin-mobile-link"
+        (click)="closeMobileMenu()">
+        <i class="bi bi-linkedin"></i> Connect on LinkedIn
+      </a>
+      }
 
-      
-      <a href="#contact" class="btn-resume mt-4 w-75 text-center" (click)="scrollToSection('contact', $event)">Hire me</a>
+      <a href="#contact" class="btn-resume mt-4 w-75 text-center" (click)="scrollToSection('contact', $event)">Hire
+        me</a>
     </nav>
   </div>
   }
