@@ -35,11 +35,11 @@
           <span class="cta-hint-text" [class.visible]="hoveredButton() !== 'none' || resumeDownloaded()">
             <span class="status-dot"></span>
             @if (resumeDownloaded()) {
-            🎉 Stats acquired! Ready to invite Player 2 to your team? 👇
+            Resume acquired! Ready to add a full-stack engineer to your team? 👇
             } @else if (hoveredButton() === 'resume') {
-            🔍 Inspect my stats & developer skill tree!
+            View my full professional background and qualifications! 🎯
             } @else if (hoveredButton() === 'hire') {
-            🎮 Ready to start the co-op campaign? Let's team up!
+            Let's collaborate and build something awesome together! 🚀
             }
           </span>
         </div>
@@ -148,7 +148,7 @@
     </div>
 
     <!-- Stats Section -->
-    <div class="row justify-content-center mt-5 pt-lg-5" [appScrollReveal]="'slide-up'" [delay]="300">
+    <div class="row justify-content-center mt-4" [appScrollReveal]="'slide-up'" [delay]="300">
       <div class="col-12 col-xl-10">
         <div class="stats-card">
           <div class="row g-4 text-center">

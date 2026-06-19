@@ -80,10 +80,11 @@ export class PortfolioComponent {
   filteredProjects = computed(() => {
     const category = this.selectedCategory();
     const projects = this.allProjects();
+    const sortedProjects = [...projects].sort((a, b) => a.id.localeCompare(b.id));
     if (category === 'All') {
-      return projects;
+      return sortedProjects;
     }
-    return projects.filter(p => p.category === category);
+    return sortedProjects.filter(p => p.category === category);
   });
 
   /* Orchestration Methods */
@@ -113,7 +114,8 @@ export class PortfolioComponent {
         }, 5000);
       }
     } catch (err: any) {
-      this.store.setContactError(err.message || 'An error occurred during submission.');
+      const displayMessage = err.error?.message || err.message || 'An error occurred during submission.';
+      this.store.setContactError(displayMessage);
     }
   }
 }

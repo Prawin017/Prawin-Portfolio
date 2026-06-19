@@ -1,5 +1,5 @@
 .hero-section {
-  padding: 2rem 0 4rem;
+  padding: 2rem 0 2rem;
   background-color: var(--color-bg-main);
 }
 
@@ -89,7 +89,6 @@
   border-radius: var(--radius-lg);
   padding: 2.25rem 1.5rem;
   box-shadow: var(--shadow-lg);
-  margin-top: 3rem;
   backdrop-filter: blur(10px);
 }
 
@@ -374,6 +373,10 @@
   .hero-desc {
     max-width: 100%;
   }
+  .avatar-magnetic-wrapper {
+    margin-top: 2rem; /* Give breathing room below fixed header for floating badges & animations */
+    margin-bottom: 1rem;
+  }
   .avatar-container {
     width: 200px;
     height: 200px;
@@ -388,20 +391,20 @@
     font-size: 1rem;
     
     &.badge-code {
-      top: 2%;
-      left: -2%;
+      top: 8%;
+      left: 0%;
     }
     &.badge-coffee {
-      top: 45%;
-      left: -8%;
+      top: 48%;
+      left: -6%;
     }
     &.badge-rocket {
-      top: 10%;
-      right: -5%;
+      top: 14%;
+      right: -2%;
     }
     &.badge-brain {
-      bottom: 2%;
-      right: -2%;
+      bottom: 6%;
+      right: 0%;
     }
   }
 }
