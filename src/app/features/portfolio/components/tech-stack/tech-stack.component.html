@@ -18,7 +18,7 @@
     <div class="row g-4 justify-content-center">
       @for (category of categories(); track category.title) {
       <div class="col-md-6 col-xl-3" [appScrollReveal]="'slide-up'" [delay]="$index * 120">
-        <div class="premium-card h-100 d-flex flex-column">
+        <div class="premium-card tech-card h-100 d-flex flex-column" [ngClass]="category.badgeClass">
           <!-- Card Header -->
           <div class="d-flex align-items-center gap-3 mb-4">
             <div class="category-icon-wrapper" [ngClass]="category.badgeClass">

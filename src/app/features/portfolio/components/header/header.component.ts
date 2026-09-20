@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, signal, OnInit, OnDestroy, inject, 
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MagneticDirective } from '../../../../shared/directives/magnetic.directive';
 import { PortfolioService } from '../../../../core/services/portfolio.service';
+import { ThemeService } from '../../../../core/services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -14,21 +15,22 @@ import { PortfolioService } from '../../../../core/services/portfolio.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly portfolioService = inject(PortfolioService);
+  private readonly themeService = inject(ThemeService);
   
   isMobileMenuOpen = signal<boolean>(false);
   isScrolled = signal<boolean>(false);
   scrollProgress = signal<number>(0);
   contactInfo = this.portfolioService.getContactInfo();
+  isDarkMode = this.themeService.isDarkMode;
 
   private scrollListener: (() => void) | null = null;
 
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
+
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      // Remove any legacy theme classes from body
-      const body = document.body;
-      const themeClasses = Array.from(body.classList).filter(c => c.startsWith('theme-'));
-      themeClasses.forEach(c => body.classList.remove(c));
-      localStorage.removeItem('prawin-theme');
 
       // Add scroll listener
       this.scrollListener = () => {

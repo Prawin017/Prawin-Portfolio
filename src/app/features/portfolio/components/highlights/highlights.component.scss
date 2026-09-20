@@ -15,42 +15,43 @@
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-  border: 1px solid transparent;
+  border: 2.5px solid transparent;
+  transition: var(--transition-smooth);
 
   &.orange {
-    background-color: rgba(245, 158, 11, 0.08);
+    background-color: rgba(217, 119, 6, 0.08);
     color: #D97706;
-    border-color: rgba(245, 158, 11, 0.15);
+    border-color: #D97706;
   }
 
   &.blue {
-    background-color: rgba(59, 130, 246, 0.08);
+    background-color: rgba(37, 99, 235, 0.08);
     color: #2563EB;
-    border-color: rgba(59, 130, 246, 0.15);
+    border-color: #2563EB;
   }
 
   &.purple {
     background-color: rgba(124, 58, 237, 0.08);
-    color: var(--color-primary);
-    border-color: rgba(124, 58, 237, 0.15);
+    color: #7C3AED;
+    border-color: #7C3AED;
   }
 
   &.teal {
-    background-color: rgba(20, 184, 166, 0.08);
+    background-color: rgba(13, 148, 136, 0.08);
     color: #0D9488;
-    border-color: rgba(20, 184, 166, 0.15);
+    border-color: #0D9488;
   }
 
   &.green {
-    background-color: rgba(16, 185, 129, 0.08);
+    background-color: rgba(5, 150, 105, 0.08);
     color: #059669;
-    border-color: rgba(16, 185, 129, 0.15);
+    border-color: #059669;
   }
 
   &.pink {
-    background-color: rgba(236, 72, 153, 0.08);
+    background-color: rgba(219, 39, 119, 0.08);
     color: #DB2777;
-    border-color: rgba(236, 72, 153, 0.15);
+    border-color: #DB2777;
   }
 }
 
@@ -64,4 +65,21 @@
 .highlight-desc {
   font-size: 0.9rem;
   line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+:host-context([data-theme='dark']) {
+  .highlight-desc {
+    color: #CBD5E1 !important;
+  }
+
+  .highlight-icon-circle {
+    border-width: 2.5px;
+    &.orange { background-color: rgba(251, 191, 36, 0.14); color: #FBBF24; border-color: #FBBF24; }
+    &.blue { background-color: rgba(96, 165, 250, 0.14); color: #60A5FA; border-color: #60A5FA; }
+    &.purple { background-color: rgba(167, 139, 250, 0.14); color: #A78BFA; border-color: #A78BFA; }
+    &.teal { background-color: rgba(45, 212, 191, 0.14); color: #2DD4BF; border-color: #2DD4BF; }
+    &.green { background-color: rgba(52, 211, 153, 0.14); color: #34D399; border-color: #34D399; }
+    &.pink { background-color: rgba(244, 114, 182, 0.14); color: #F472B6; border-color: #F472B6; }
+  }
 }

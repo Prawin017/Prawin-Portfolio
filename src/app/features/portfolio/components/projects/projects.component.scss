@@ -9,9 +9,9 @@
 
 /* Filter Bar Styling */
 .filter-tabs-bar {
-  background-color: #F1F5F9;
+  background-color: var(--color-bg-card);
   border-radius: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  border: 1.5px solid var(--color-border-card);
   box-shadow: var(--shadow-sm);
   display: inline-flex;
 }
@@ -84,6 +84,7 @@
 .project-desc {
   font-size: 0.95rem;
   line-height: 1.6;
+  color: var(--color-text-muted);
 }
 
 /* Links and actions */
@@ -159,4 +160,24 @@
   padding: 4px 10px;
   border-radius: 6px;
   border: 1px solid var(--color-border-card);
+  transition: var(--transition-smooth);
+}
+
+:host-context([data-theme='dark']) {
+  .project-desc {
+    color: #CBD5E1 !important;
+  }
+
+  .tag-item {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #E2E8F0;
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .github-link {
+    color: #CBD5E1;
+    &:hover {
+      color: #F8FAFC;
+    }
+  }
 }

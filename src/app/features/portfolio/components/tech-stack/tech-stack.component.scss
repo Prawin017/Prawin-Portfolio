@@ -7,6 +7,50 @@
   z-index: 10;
 }
 
+/* Individual Tech Stack Card Customization */
+.tech-card {
+  background: var(--color-bg-card);
+  border: 1.5px solid var(--color-border-card);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-smooth);
+
+  &.badge-purple {
+    --category-color: #7C3AED;
+    --category-rgb: 124, 58, 237;
+  }
+
+  &.badge-green {
+    --category-color: #059669;
+    --category-rgb: 16, 185, 129;
+  }
+
+  &.badge-pink {
+    --category-color: #DB2777;
+    --category-rgb: 236, 72, 153;
+  }
+
+  &.badge-blue,
+  &.badge-orange {
+    --category-color: #D97706;
+    --category-rgb: 245, 158, 11;
+  }
+
+  &.badge-teal {
+    --category-color: #0D9488;
+    --category-rgb: 20, 184, 166;
+  }
+
+  /* Top accent line matching card letters on hover */
+  &::before {
+    background: var(--category-color, var(--gradient-primary));
+  }
+
+  &:hover {
+    border-color: rgba(var(--category-rgb, var(--color-primary-rgb)), 0.25);
+    box-shadow: 0 20px 40px -10px rgba(var(--category-rgb, var(--color-primary-rgb)), 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
+  }
+}
+
 .category-icon-wrapper {
   width: 48px;
   height: 48px;
@@ -15,30 +59,38 @@
   align-items: center;
   justify-content: center;
   font-size: 1.35rem;
-  border: 1px solid transparent;
+  border: 2.5px solid transparent;
+  transition: var(--transition-smooth);
   
   &.badge-purple {
     background-color: rgba(124, 58, 237, 0.08);
-    color: var(--color-primary);
-    border-color: rgba(124, 58, 237, 0.15);
+    color: #7C3AED;
+    border-color: #7C3AED;
   }
   
   &.badge-green {
     background-color: rgba(16, 185, 129, 0.08);
     color: #059669;
-    border-color: rgba(16, 185, 129, 0.15);
-  }
-  
-  &.badge-blue {
-    background-color: rgba(59, 130, 246, 0.08);
-    color: #2563EB;
-    border-color: rgba(59, 130, 246, 0.15);
+    border-color: #059669;
   }
   
   &.badge-pink {
     background-color: rgba(236, 72, 153, 0.08);
     color: #DB2777;
-    border-color: rgba(236, 72, 153, 0.15);
+    border-color: #DB2777;
+  }
+
+  &.badge-blue,
+  &.badge-orange {
+    background-color: rgba(245, 158, 11, 0.08);
+    color: #D97706;
+    border-color: #D97706;
+  }
+
+  &.badge-teal {
+    background-color: rgba(20, 184, 166, 0.08);
+    color: #0D9488;
+    border-color: #0D9488;
   }
 }
 
@@ -65,11 +117,11 @@
 
   &.badge-purple {
     background-color: rgba(124, 58, 237, 0.04);
-    color: var(--color-primary);
+    color: #7C3AED;
     border-color: rgba(124, 58, 237, 0.08);
     
     &:hover {
-      background-color: var(--color-primary);
+      background-color: #7C3AED;
       color: white;
       transform: translateY(-2px);
     }
@@ -87,18 +139,6 @@
     }
   }
 
-  &.badge-blue {
-    background-color: rgba(59, 130, 246, 0.04);
-    color: #2563EB;
-    border-color: rgba(59, 130, 246, 0.08);
-    
-    &:hover {
-      background-color: #2563EB;
-      color: white;
-      transform: translateY(-2px);
-    }
-  }
-
   &.badge-pink {
     background-color: rgba(236, 72, 153, 0.04);
     color: #DB2777;
@@ -108,6 +148,137 @@
       background-color: #DB2777;
       color: white;
       transform: translateY(-2px);
+    }
+  }
+
+  &.badge-blue,
+  &.badge-orange {
+    background-color: rgba(245, 158, 11, 0.04);
+    color: #D97706;
+    border-color: rgba(245, 158, 11, 0.08);
+    
+    &:hover {
+      background-color: #D97706;
+      color: white;
+      transform: translateY(-2px);
+    }
+  }
+
+  &.badge-teal {
+    background-color: rgba(20, 184, 166, 0.04);
+    color: #0D9488;
+    border-color: rgba(20, 184, 166, 0.08);
+    
+    &:hover {
+      background-color: #0D9488;
+      color: white;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* Dark Theme Adjustments for Tech Stack */
+:host-context([data-theme='dark']) {
+  .tech-card {
+    &.badge-purple {
+      --category-color: #A78BFA;
+      --category-rgb: 167, 139, 250;
+    }
+    &.badge-green {
+      --category-color: #34D399;
+      --category-rgb: 52, 211, 153;
+    }
+    &.badge-pink {
+      --category-color: #F472B6;
+      --category-rgb: 244, 114, 182;
+    }
+    &.badge-blue,
+    &.badge-orange {
+      --category-color: #FBBF24;
+      --category-rgb: 251, 191, 36;
+    }
+    &.badge-teal {
+      --category-color: #2DD4BF;
+      --category-rgb: 45, 212, 191;
+    }
+  }
+
+  .category-icon-wrapper {
+    border-width: 2.5px;
+    &.badge-purple {
+      background-color: rgba(167, 139, 250, 0.14);
+      color: #A78BFA;
+      border-color: #A78BFA;
+    }
+    &.badge-green {
+      background-color: rgba(52, 211, 153, 0.14);
+      color: #34D399;
+      border-color: #34D399;
+    }
+    &.badge-pink {
+      background-color: rgba(244, 114, 182, 0.14);
+      color: #F472B6;
+      border-color: #F472B6;
+    }
+    &.badge-blue,
+    &.badge-orange {
+      background-color: rgba(251, 191, 36, 0.14);
+      color: #FBBF24;
+      border-color: #FBBF24;
+    }
+    &.badge-teal {
+      background-color: rgba(45, 212, 191, 0.14);
+      color: #2DD4BF;
+      border-color: #2DD4BF;
+    }
+  }
+
+  .skill-tag {
+    &.badge-purple {
+      background-color: rgba(167, 139, 250, 0.1);
+      color: #A78BFA;
+      border-color: rgba(167, 139, 250, 0.2);
+      &:hover {
+        background-color: #A78BFA;
+        color: #0F172A;
+      }
+    }
+    &.badge-green {
+      background-color: rgba(52, 211, 153, 0.1);
+      color: #34D399;
+      border-color: rgba(52, 211, 153, 0.2);
+      &:hover {
+        background-color: #34D399;
+        color: #0F172A;
+      }
+    }
+    &.badge-pink {
+      background-color: rgba(244, 114, 182, 0.1);
+      color: #F472B6;
+      border-color: rgba(244, 114, 182, 0.2);
+      &:hover {
+        background-color: #F472B6;
+        color: #0F172A;
+      }
+    }
+    &.badge-blue,
+    &.badge-orange {
+      background-color: rgba(251, 191, 36, 0.1);
+      color: #FBBF24;
+      border-color: rgba(251, 191, 36, 0.2);
+      &:hover {
+        background-color: #FBBF24;
+        color: #0F172A;
+      }
+    }
+    &.badge-teal {
+      background-color: rgba(45, 212, 191, 0.1);
+      color: #2DD4BF;
+      border-color: rgba(45, 212, 191, 0.2);
+      &:hover {
+        background-color: #2DD4BF;
+        color: #0F172A;
+      }
     }
   }
 }

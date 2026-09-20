@@ -21,7 +21,7 @@
 .progress-track-bar {
   width: 100%;
   height: 8px;
-  background-color: #F1F5F9;
+  background-color: var(--color-border-card, #F1F5F9);
   border-radius: 20px;
   overflow: hidden;
   position: relative;
