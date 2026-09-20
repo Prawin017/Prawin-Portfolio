@@ -135,11 +135,19 @@
   }
 
   .celestial-icon {
-    display: inline-flex;
     align-items: center;
     justify-content: center;
-    animation: celestial-pop-spin 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     line-height: 1;
+  }
+
+  /* Default (Light Mode): Show Moon, Hide Sun */
+  .sun-icon {
+    display: none !important;
+  }
+
+  .moon-icon {
+    display: inline-flex !important;
+    animation: celestial-pop-spin 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
 
   /* Crescent Moon with Stars (shown in Light mode to switch to Dark) */
@@ -165,6 +173,15 @@
 :host-context([data-theme='dark']) .theme-toggle-btn.celestial-btn {
   border-color: rgba(255, 255, 255, 0.12);
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+
+  .sun-icon {
+    display: inline-flex !important;
+    animation: celestial-pop-spin 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .moon-icon {
+    display: none !important;
+  }
 
   &:hover {
     border-color: #FBBF24;
@@ -217,10 +234,25 @@
   }
 
   .celestial-icon {
-    display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .sun-icon {
+    display: none !important;
+  }
+
+  .moon-icon {
+    display: inline-flex !important;
     animation: celestial-pop-spin 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .theme-label-dark {
+    display: none !important;
+  }
+
+  .theme-label-light {
+    display: inline !important;
   }
 
   .moon-icon i {
@@ -248,6 +280,23 @@
 
 :host-context([data-theme='dark']) .theme-toggle-mobile-btn {
   border-color: rgba(255, 255, 255, 0.12);
+
+  .sun-icon {
+    display: inline-flex !important;
+    animation: celestial-pop-spin 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .moon-icon {
+    display: none !important;
+  }
+
+  .theme-label-light {
+    display: none !important;
+  }
+
+  .theme-label-dark {
+    display: inline !important;
+  }
 
   &:hover {
     border-color: #FBBF24;

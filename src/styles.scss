@@ -557,3 +557,48 @@ body, .premium-card, .header-nav, .mobile-drawer, .nav-link-item, .category-icon
     padding: 1.25rem;
   }
 }
+
+/* ==========================================================================
+   CRITICAL SSR THEME TOGGLE RULES
+   Guarantees mutual exclusivity of Sun and Moon icons across all SSR/hydration states.
+   ========================================================================== */
+.celestial-btn .sun-icon,
+.theme-toggle-mobile-btn .sun-icon,
+.theme-toggle-mobile-btn .theme-label-dark {
+  display: none !important;
+}
+
+.celestial-btn .moon-icon,
+.theme-toggle-mobile-btn .moon-icon {
+  display: inline-flex !important;
+}
+
+.theme-toggle-mobile-btn .theme-label-light {
+  display: inline !important;
+}
+
+/* Dark Mode Overrides (Triggered immediately by early <script> in <head>) */
+[data-theme='dark'] .celestial-btn .sun-icon,
+[data-theme='dark'] .theme-toggle-mobile-btn .sun-icon,
+html.dark-theme .celestial-btn .sun-icon,
+html.dark-theme .theme-toggle-mobile-btn .sun-icon {
+  display: inline-flex !important;
+}
+
+[data-theme='dark'] .celestial-btn .moon-icon,
+[data-theme='dark'] .theme-toggle-mobile-btn .moon-icon,
+html.dark-theme .celestial-btn .moon-icon,
+html.dark-theme .theme-toggle-mobile-btn .moon-icon {
+  display: none !important;
+}
+
+[data-theme='dark'] .theme-toggle-mobile-btn .theme-label-dark,
+html.dark-theme .theme-toggle-mobile-btn .theme-label-dark {
+  display: inline !important;
+}
+
+[data-theme='dark'] .theme-toggle-mobile-btn .theme-label-light,
+html.dark-theme .theme-toggle-mobile-btn .theme-label-light {
+  display: none !important;
+}
+

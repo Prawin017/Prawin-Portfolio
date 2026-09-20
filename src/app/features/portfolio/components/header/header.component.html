@@ -37,18 +37,15 @@
         [attr.aria-label]="isDarkMode() ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
         [title]="isDarkMode() ? 'Switch to Light Mode' : 'Switch to Dark Mode'" 
         appMagnetic [magneticStrength]="0.2">
-        <span class="celestial-inner" [class.is-sun]="isDarkMode()" [class.is-moon]="!isDarkMode()">
-          @if (isDarkMode()) {
-          <!-- Radiant Amber Sun -->
+        <span class="celestial-inner">
+          <!-- Radiant Amber Sun (shown in Dark mode) -->
           <span class="celestial-icon sun-icon" aria-hidden="true">
             <i class="bi bi-sun-fill"></i>
           </span>
-          } @else {
-          <!-- Sleek Cyan Crescent Moon & Stars -->
+          <!-- Sleek Cyan Crescent Moon & Stars (shown in Light mode) -->
           <span class="celestial-icon moon-icon" aria-hidden="true">
             <i class="bi bi-moon-stars-fill"></i>
           </span>
-          }
         </span>
       </button>
     </div>
@@ -81,18 +78,15 @@
       <div class="d-flex flex-column align-items-center gap-3 w-75 mt-3">
         <a href="#contact" class="btn-resume w-100 text-center" (click)="scrollToSection('contact', $event)">Hire me</a>
         <button class="theme-toggle-mobile-btn w-100" (click)="toggleTheme()">
-          <span class="celestial-mobile-inner" [class.is-sun]="isDarkMode()" [class.is-moon]="!isDarkMode()">
-            @if (isDarkMode()) {
+          <span class="celestial-mobile-inner">
             <span class="celestial-icon sun-icon me-2" aria-hidden="true">
               <i class="bi bi-sun-fill"></i>
             </span>
-            <span>Switch to Light Mode</span>
-            } @else {
             <span class="celestial-icon moon-icon me-2" aria-hidden="true">
               <i class="bi bi-moon-stars-fill"></i>
             </span>
-            <span>Switch to Dark Mode</span>
-            }
+            <span class="theme-label-light">Switch to Dark Mode</span>
+            <span class="theme-label-dark">Switch to Light Mode</span>
           </span>
         </button>
       </div>

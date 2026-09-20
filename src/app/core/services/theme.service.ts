@@ -10,7 +10,11 @@ export class ThemeService {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly STORAGE_KEY = 'portfolio-theme';
 
-  private readonly themeSignal = signal<ThemeMode>('light');
+  private readonly themeSignal = signal<ThemeMode>(
+    (typeof document !== 'undefined' && document.documentElement && document.documentElement.getAttribute('data-theme') === 'dark')
+      ? 'dark'
+      : 'light'
+  );
 
   readonly currentTheme = this.themeSignal.asReadonly();
   readonly isDarkMode = computed(() => this.themeSignal() === 'dark');
@@ -22,7 +26,10 @@ export class ThemeService {
   private initTheme(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    // 1. Check localStorage first
+    // 1. Check current DOM attribute (set synchronously by index.html script in <head>)
+    const docTheme = document.documentElement.getAttribute('data-theme') as ThemeMode | null;
+
+    // 2. Check localStorage
     const savedTheme = localStorage.getItem(this.STORAGE_KEY) as ThemeMode | null;
 
     if (savedTheme === 'light' || savedTheme === 'dark') {
@@ -30,17 +37,24 @@ export class ThemeService {
       return;
     }
 
-    // 2. Check system preference
+    if (docTheme === 'light' || docTheme === 'dark') {
+      this.applyTheme(docTheme);
+      return;
+    }
+
+    // 3. Check system preference
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     const initialTheme: ThemeMode = prefersDark ? 'dark' : 'light';
     this.applyTheme(initialTheme);
 
-    // 3. Listen for OS-level changes if user hasn't explicitly set a preference
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem(this.STORAGE_KEY)) {
-        this.applyTheme(e.matches ? 'dark' : 'light');
-      }
-    });
+    // 4. Listen for OS-level changes if user hasn't explicitly set a preference
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem(this.STORAGE_KEY)) {
+          this.applyTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    }
   }
 
   toggleTheme(): void {

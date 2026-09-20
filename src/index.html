@@ -9,6 +9,19 @@
   <meta name="keywords" content="Prawin, Full Stack Engineer, Angular Developer, Node.js, TypeScript, Portfolio">
   <meta name="author" content="Prawin">
   <link rel="icon" type="image/png" href="logo.png">
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('portfolio-theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark-theme');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>
